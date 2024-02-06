@@ -1,0 +1,16 @@
+{% extends 'blog/index.html' %}
+
+{% block content %}
+{% for post in category.posts.all %}
+<div class="card">
+    <h3 class="card-title text-center">{{ post.title }}</h3>
+    <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">
+            {{ post.body | truncatewords:150 }}   
+        </p>
+        <a href="{% url 'post_detail_url' pk=post.pk %}" class="btn btn-primary">Read more</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
